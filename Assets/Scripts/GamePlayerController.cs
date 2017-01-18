@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -7,13 +7,40 @@ public class GamePlayerController : NetworkBehaviour {
 
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn;
+	
+	[SyncVar]
+	public string pname = "player";
 
+	void OnGUI()
+	{
+		if(isLocalPlayer)
+		{
+			pname = GUI.TextField(new Rect (25,Screen.height - 40,100,30), pname);
+			if(GUI.Button(new Rect(130,Screen.height - 40,80,30), "Change"))
+			{
+				CmdChangeName(pname);
+			}
+		}
+	}
+
+	[Command]
+	public void CmdChangeName(string newName)
+	{
+		pname = newName;
+	}
+
+	void Start () {
+        if (isLocalPlayer)
+	SmoothCameraFollow.target = this.transform;
+
+	}
 
 	void Update () {
 
 		if (!isLocalPlayer) {
 			return;
 		}
+		this.GetComponentInChildren<TextMesh>().text = pname;
 		float x = Input.GetAxis ("Horizontal") * Time.deltaTime * 150.0f;
 		float z = Input.GetAxis ("Vertical") * Time.deltaTime * 3.0f;
 

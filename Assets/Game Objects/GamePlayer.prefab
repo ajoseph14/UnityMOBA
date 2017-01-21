@@ -594,6 +594,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1771153106682366, guid: 5e88839e800ecaa4cb318ffc65655445,
     type: 2}
   bulletSpawn: {fileID: 4676212806712846}
+  pname: player
 --- !u!136 &136356096397099212
 CapsuleCollider:
   m_ObjectHideFlags: 1

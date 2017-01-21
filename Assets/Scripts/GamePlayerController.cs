@@ -7,6 +7,8 @@ public class GamePlayerController : NetworkBehaviour {
 
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn;
+	public float Speed = 500f;
+	public float Rotation = 5f; 
 	
 	[SyncVar]
 	public string pname = "player";
@@ -41,8 +43,8 @@ public class GamePlayerController : NetworkBehaviour {
 			return;
 		}
 		this.GetComponentInChildren<TextMesh>().text = pname;
-		float x = Input.GetAxis ("Horizontal") * Time.deltaTime * 150.0f;
-		float z = Input.GetAxis ("Vertical") * Time.deltaTime * 3.0f;
+		float x = Input.GetAxis ("Horizontal") * Time.deltaTime * Speed;
+		float z = Input.GetAxis ("Vertical") * Time.deltaTime * Rotation;
 
 		transform.Rotate (0, x, 0);
 		transform.Translate (0, 0, z);

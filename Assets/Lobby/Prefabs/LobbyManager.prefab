@@ -604,6 +604,8 @@ GameObject:
   - 114: {fileID: 11466428}
   - 114: {fileID: 11475086}
   - 114: {fileID: 11415508}
+  - 114: {fileID: 114000012155650554}
+  - 114: {fileID: 114000012054442238}
   m_Layer: 5
   m_Name: LobbyManager
   m_TagString: Untagged
@@ -1159,7 +1161,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 0
-  m_Text: NETWORK LOBBY EXAMPLE
+  m_Text: uMOBA
 --- !u!114 &11403610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2830,7 +2832,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 127.0.0.1
+  m_Text: 
 --- !u!114 &11466428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3193,19 +3195,23 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 0}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 0
-  m_OfflineScene: NetworkLobby
+  m_OfflineScene: networklobby
   m_OnlineScene: 
-  m_SpawnPrefabs: []
-  m_CustomConfig: 0
-  m_MaxConnections: 4
+  m_SpawnPrefabs:
+  - {fileID: 188500, guid: eb7ef4b32f0674fa5823243e3f4cc012, type: 2}
+  - {fileID: 168728, guid: 33ef07e8bbd6b42b48ad129e43d7d27f, type: 2}
+  - {fileID: 174788, guid: 549d11a9d0bcc01469193fd6e444d62e, type: 2}
+  - {fileID: 173424, guid: e231670638c7fe84bbb9fa57d788b6c7, type: 2}
+  m_CustomConfig: 1
+  m_MaxConnections: 10
   m_ConnectionConfig:
     m_PacketSize: 1500
     m_FragmentSize: 500
     m_ResendTimeout: 1200
-    m_DisconnectTimeout: 2000
-    m_ConnectTimeout: 2000
+    m_DisconnectTimeout: 5000
+    m_ConnectTimeout: 5000
     m_MinUpdateTimeout: 10
-    m_PingTimeout: 500
+    m_PingTimeout: 1500
     m_ReducedPingTimeout: 100
     m_AllCostTimeout: 20
     m_NetworkDropThreshold: 5
@@ -3225,7 +3231,7 @@ MonoBehaviour:
     m_ReactorMaximumReceivedMessages: 1024
     m_ReactorMaximumSentMessages: 1024
     m_MaxPacketSize: 2000
-  m_Channels: 0500000000000000
+  m_Channels: 0400000004000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
@@ -3239,14 +3245,14 @@ MonoBehaviour:
   isNetworkActive: 0
   matchMaker: {fileID: 0}
   m_ShowLobbyGUI: 0
-  m_MaxPlayers: 3
-  m_MaxPlayersPerConnection: 2
-  m_MinPlayers: 2
+  m_MaxPlayers: 10
+  m_MaxPlayersPerConnection: 1
+  m_MinPlayers: 1
   m_LobbyPlayerPrefab: {fileID: 11487034, guid: ad727d7e1462ecc4f83c898ecc501997,
     type: 2}
-  m_GamePlayerPrefab: {fileID: 0}
-  m_LobbyScene: 
-  m_PlayScene: 
+  m_GamePlayerPrefab: {fileID: 115582, guid: 3f15ae3b1dff84d25bc8da607162c1e7, type: 2}
+  m_LobbyScene: networklobby
+  m_PlayScene: World
   lobbySlots: []
   prematchCountdown: 3
   topPanel: {fileID: 11424994}
@@ -3254,10 +3260,10 @@ MonoBehaviour:
   lobbyPanel: {fileID: 22443498}
   infoPanel: {fileID: 11442006}
   countdownPanel: {fileID: 11413810}
-  addPlayerButton: {fileID: 144256}
+  addPlayerButton: {fileID: 161020}
   backButton: {fileID: 11477488}
-  statusInfo: {fileID: 11403930}
-  hostInfo: {fileID: 11415712}
+  statusInfo: {fileID: 11415712}
+  hostInfo: {fileID: 11403930}
   _playerNumber: 0
   _isMatchmaking: 0
 --- !u!114 &11476426
@@ -5673,3 +5679,25 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155310}
   m_IsPrefabParent: 1
+--- !u!114 &114000012054442238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c89254efac44e848abe7787ee786e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000012155650554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b862baf0af18042a0a8b184213c2b472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -105,16 +105,18 @@
      <Compile Include="Assets\MOBA and Tower Defense\Standard Assets\Environment\Water\Water\Scripts\Water.cs" />
      <Compile Include="Assets\MOBA and Tower Defense\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs" />
      <Compile Include="Assets\MOBA and Tower Defense\Standard Assets\Environment\Water\Water\Scripts\WaterTile.cs" />
-     <Compile Include="Assets\NetworkLobbyHook.cs" />
-     <Compile Include="Assets\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\Billboard.cs" />
      <Compile Include="Assets\Scripts\Bullet.cs" />
      <Compile Include="Assets\Scripts\FaceCamera.cs" />
      <Compile Include="Assets\Scripts\GamePlayerController.cs" />
      <Compile Include="Assets\Scripts\Health.cs" />
      <Compile Include="Assets\Scripts\Movement.cs" />
-     <Compile Include="Assets\SetupLocalPlayer.cs" />
-     <Compile Include="Assets\SmoothCameraFollow.cs" />
+     <Compile Include="Assets\Scripts\NetworkLobbyHook.cs" />
+     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Scripts\Player.cs" />
+     <Compile Include="Assets\Scripts\Rip_PlayerScript.cs" />
+     <Compile Include="Assets\Scripts\SetupLocalPlayer.cs" />
+     <Compile Include="Assets\Scripts\SmoothCameraFollow.cs" />
      <Compile Include="Assets\UI\MainGame_UI\Ability1.cs" />
      <None Include="Assets\MOBA and Tower Defense\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\MOBA and Tower Defense\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -200,9 +202,6 @@
      <None Include="Assets\MOBA and Tower Defense\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
      <None Include="Assets\MOBA and Tower Defense\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\MOBA and Tower Defense\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>P:/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>P:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -217,9 +216,6 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>P:/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>P:/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>P:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>

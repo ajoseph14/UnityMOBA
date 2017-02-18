@@ -7,9 +7,11 @@ public class GamePlayerController : NetworkBehaviour {
 
 	public GameObject bulletPrefab;
 	public Transform bulletSpawn;
-	public float Speed = 500f;
-	public float Rotation = 5f; 
-	
+	public float speed = 6f;            // The speed that the player will move at.
+	Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
+	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
+
+
 	[SyncVar]
 	public string pname = "player";
 
@@ -30,7 +32,10 @@ public class GamePlayerController : NetworkBehaviour {
 	{
 		pname = newName;
 	}
-
+	void Awake ()
+	{
+		playerRigidbody = GetComponent <Rigidbody> ();
+	}
 	void Start () {
         if (isLocalPlayer)
 	SmoothCameraFollow.target = this.transform;
@@ -43,11 +48,8 @@ public class GamePlayerController : NetworkBehaviour {
 			return;
 		}
 		this.GetComponentInChildren<TextMesh>().text = pname;
-		float x = Input.GetAxis ("Horizontal") * Time.deltaTime * Speed;
-		float z = Input.GetAxis ("Vertical") * Time.deltaTime * Rotation;
-
-		transform.Rotate (0, x, 0);
-		transform.Translate (0, 0, z);
+		Move ();
+		Turning ();
 
 		if (Input.GetMouseButtonDown (0)) 
 		{
@@ -77,4 +79,41 @@ public class GamePlayerController : NetworkBehaviour {
 	{
 		GetComponent<MeshRenderer> ().material.color = Color.blue;
 	}
+
+	void Turning ()
+	{
+		// Create a ray from the mouse cursor on screen in the direction of the camera.
+		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+
+		// Create a RaycastHit variable to store information about what was hit by the ray.
+		RaycastHit floorHit;
+
+		// Perform the raycast and if it hits something on the floor layer...
+		if(Physics.Raycast (camRay, out floorHit, camRayLength))
+		{
+			// Create a vector from the player to the point on the floor the raycast from the mouse hit.
+			Vector3 playerToMouse = floorHit.point - transform.position;
+
+			// Ensure the vector is entirely along the floor plane.
+			playerToMouse.y = 0f;
+
+			// Create a quaternion (rotation) based on looking down the vector from the player to the mouse.
+			Quaternion newRotation = Quaternion.LookRotation (playerToMouse);
+
+			// Set the player's rotation to this new rotation.
+			playerRigidbody.MoveRotation (newRotation);
+		}
+	}
+
+
+	void Move ()
+	{
+		var moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+		moveDirection = Camera.main.transform.TransformDirection(moveDirection);
+		moveDirection.y = 0;
+
+
+		playerRigidbody.MovePosition(playerRigidbody.position + moveDirection * speed * Time.deltaTime);
+	}
+
 }
